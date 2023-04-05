@@ -31,6 +31,13 @@ class TestModel(unittest.TestCase):
             result = list(generator_text('test.txt', ['жук']))
             self.assertEqual(result, expected_output)
 
+    def test_generator_multiple_str(self):
+        file_content = 'МоРе вода трава\nжук'
+        expected_output = ['МоРе вода трава', 'жук']
+        with mock.patch('builtins.open', mock_open(read_data=file_content)):
+            result = list(generator_text('test.txt', ['трава', 'жук']))
+            self.assertEqual(result, expected_output)
+
     def test_generator_not_find(self):
         file_content = 'А Роза упала на лапу Азора'
         expected_output = []

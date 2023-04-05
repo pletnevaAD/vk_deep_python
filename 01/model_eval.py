@@ -3,6 +3,8 @@ import random
 
 class SomeModel:
     def predict(self, message: str) -> float:
+        if not isinstance(message, str):
+            raise ValueError("message должен быть str")
         return random.random()
 
 
