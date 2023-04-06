@@ -1,3 +1,4 @@
+import io
 import unittest
 from unittest import mock
 from unittest.mock import mock_open
@@ -37,6 +38,17 @@ class TestModel(unittest.TestCase):
         with mock.patch('builtins.open', mock_open(read_data=file_content)):
             result = list(generator_text('test.txt', ['трава', 'жук']))
             self.assertEqual(result, expected_output)
+
+    def test_generator_different_arguments_type(self):
+        file = io.StringIO("МоРе вода трава\nжук")
+        result = list(generator_text(file, ['море', 'вода']))
+        self.assertEqual(len(result), 1)
+        self.assertIn("МоРе вода трава", result)
+        result = list(generator_text('C:\\Users\\pletn\\PycharmProjects\\vk_deep_python\\text', ['море', 'вода']))
+        self.assertEqual(len(result), 2)
+        self.assertIn("океан крыша море вода", result)
+        self.assertIn("джеймс бонд морей море", result)
+
 
     def test_generator_not_find(self):
         file_content = 'А Роза упала на лапу Азора'
