@@ -1,6 +1,6 @@
 import unittest
 
-from _04.custom_meta import CustomClass
+from custom_meta import CustomClass
 
 
 class TestMeta(unittest.TestCase):

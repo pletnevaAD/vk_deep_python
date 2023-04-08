@@ -1,7 +1,7 @@
 import datetime
 import unittest
 
-from _04.descriptor import ReleaseYearField, Movie, NotValidReleaseYear, NotValidDuration, NotValidMoneySum, \
+from descriptor import ReleaseYearField, Movie, NotValidReleaseYear, NotValidDuration, NotValidMoneySum, \
     DurationField, MoneyField
 
 

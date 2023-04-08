@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import Mock, call
 
-from _02.parser import parse_json
+from parser import parse_json
 
 
 class TestModel(unittest.TestCase):
