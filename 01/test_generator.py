@@ -44,7 +44,7 @@ class TestModel(unittest.TestCase):
         result = list(generator_text(file, ['море', 'вода']))
         self.assertEqual(len(result), 1)
         self.assertIn("МоРе вода трава", result)
-        result = list(generator_text('C:\\Users\\pletn\\PycharmProjects\\vk_deep_python\\text', ['море', 'вода']))
+        result = list(generator_text('text', ['море', 'вода']))
         self.assertEqual(len(result), 2)
         self.assertIn("океан крыша море вода", result)
         self.assertIn("джеймс бонд морей море", result)

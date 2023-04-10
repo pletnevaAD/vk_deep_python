@@ -55,3 +55,14 @@ class TestModel(unittest.TestCase):
             self.model.predict(123)
         self.assertEqual(type(err.exception), ValueError)
         self.assertEqual(str(err.exception), "message должен быть str")
+
+    def test_call(self):
+        with mock.patch("model_eval.SomeModel.predict") as mock_predict:
+            mock_predict.return_value = 0.5
+            model_eval.predict_message_mood("qwerty", self.model, bad_thresholds=0, good_thresholds=1)
+            model_eval.predict_message_mood("Вулкан", self.model, bad_thresholds=0, good_thresholds=1)
+            excepted_calls = [
+                mock.call('qwerty'),
+                mock.call('Вулкан')
+            ]
+            self.assertEqual(excepted_calls, mock_predict.mock_calls)
