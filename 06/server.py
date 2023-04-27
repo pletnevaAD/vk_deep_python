@@ -72,5 +72,5 @@ if __name__ == '__main__':
     parser.add_argument('-w', default=0, type=int)
     parser.add_argument('-k', default=0, type=int)
     server_input = parser.parse_args(sys.argv[1:])
-    server = Server(5, 7, 'localhost', 14000)
+    server = Server(server_input.w, server_input.k, 'localhost', 14000)
     server.start_server()
