@@ -3,7 +3,10 @@ class CustomMeta(type):
     def __new__(mcs, name, bases, classdict, **kwargs):
 
         def __setattr__(self, attr_name, value):
-            self.__dict__[f'custom_{attr_name}'] = value
+            if attr_name.startswith("__") and attr_name[-2:] == "__":
+                self.__dict__[f'custom_{attr_name}'] = value
+            else:
+                self.__dict__[f"custom_{attr_name}"] = value
 
         new_classdict = {'__setattr__': __setattr__}
         for key, value in classdict.items():
