@@ -27,6 +27,7 @@ class TestCustomList(unittest.TestCase):
         self.assertEqual(list(self.custom_list2), [6, 39])
         self.assertEqual(list(self.list1), [-1])
         self.assertEqual(list(self.custom_list4), [0])
+        self.assertEqual(list(self.list2), [1, 4, 5])
 
     def test_sub_function(self):
         custom_list3 = self.custom_list2 - self.custom_list1
@@ -37,20 +38,19 @@ class TestCustomList(unittest.TestCase):
         self.assertEqual(list(self.list1 - self.custom_list4), [-1])
         self.assertEqual(list(self.custom_list4 - self.list1), [1])
         self.assertEqual(list(self.list2 - self.custom_list4), self.list2)
-        self.assertEqual(list(self.custom_list4 - self.list2), self.list2 * (-1))
+        self.assertEqual(list(self.custom_list4 - self.list2), [-1, -4, -5])
         self.assertEqual(list(CustomList() - CustomList()), [])
         self.assertIs(type(self.custom_list1 - self.custom_list2), CustomList)
         self.assertEqual(list(self.custom_list1), [1, 2, 3])
         self.assertEqual(list(self.custom_list2), [6, 39])
         self.assertEqual(list(self.list1), [-1])
         self.assertEqual(list(self.custom_list4), [0])
+        self.assertEqual(list(self.list2), [1, 4, 5])
 
     def test_lt(self):
         self.assertTrue(self.custom_list1 < self.custom_list2)
         self.assertFalse(self.custom_list1 < self.custom_list1)
         self.assertTrue(CustomList([20]) < CustomList([1, 19, 2]))
-        self.assertEqual(list(self.custom_list1), [1, 2, 3])
-        self.assertEqual(list(self.custom_list2), [6, 39])
         self.assertEqual(list(self.custom_list1), [1, 2, 3])
         self.assertEqual(list(self.custom_list2), [6, 39])
 
